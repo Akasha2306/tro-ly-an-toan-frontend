@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra cứu - Trợ Lý An Toàn</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bevan&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Thư viện Tesseract.js hỗ trợ nhận diện chữ qua ảnh (OCR) -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+</head>
+<body>
+
+    <div class="header-container">
+        <h1>Đang chọn "tra cứu"</h1>
+        <h2>Vui lòng chọn tính năng</h2>
+    </div>
+
+    <div class="lookup-container">
+
+        <!-- Ô TÍNH NĂNG 1: TRA CỨU SẢN PHẨM BẰNG TÊN -->
+        <div class="lookup-card">
+            <div class="card-title">Tra cứu sản phẩm</div>
+            <hr class="card-divider">
+            
+            <div class="card-body">
+                <form onsubmit="event.preventDefault(); xuLyTraCuuSanPham();">
+                    <div class="search-wrapper">
+                        <input type="text" id="product-input" class="search-input" placeholder=" " />
+                        <span class="marquee-placeholder">Nhập tên sản phẩm vào đây...</span>
+                        <button type="submit" class="search-icon" style="background:none; border:none; padding:0; cursor:pointer;">
+                            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="card-description">
+                    Tra cứu, xác minh các sản phẩm dược, mỹ phẩm, tiêu dùng...
+                </div>
+                <div id="product-result" class="result-box"></div>
+            </div>
+        </div>
+
+        <!-- Ô TÍNH NĂNG 2: TRA CỨU SỐ ĐIỆN THOẠI -->
+        <div class="lookup-card">
+            <div class="card-title">Tra cứu số điện thoại</div>
+            <hr class="card-divider">
+            <div class="card-body">
+                <form onsubmit="event.preventDefault(); xuLyKiemTraSdt();">
+                    <div class="search-wrapper">
+                        <input type="text" id="phone-input" class="search-input" placeholder=" " />
+                        <span class="marquee-placeholder">Nhập số điện thoại vào đây...</span>
+                        <button type="submit" class="search-icon" style="background:none; border:none; padding:0; cursor:pointer;">
+                            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="card-description">
+                    Tra cứu lừa đảo, xác minh số điện thoại có nguy hiểm hay không.
+                </div>
+                <div id="phone-result" class="result-box"></div>
+            </div>
+        </div>
+
+        <!-- Ô TÍNH NĂNG 3: TRA CỨU SỐ TÀI KHOẢN NGÂN HÀNG -->
+        <div class="lookup-card">
+            <div class="card-title">Tra cứu số tài khoản</div>
+            <hr class="card-divider">
+            
+            <div class="card-body">
+                <form onsubmit="event.preventDefault(); kiemTraTaiKhoanNganHang();">
+                    <div class="card-label">Chọn Ngân hàng nhận tiền:</div>
+                    <select id="bank-select" class="bank-dropdown">
+                        <option value="Vietcombank">Vietcombank (VCB)</option>
+                        <option value="VietinBank">VietinBank (CTG)</option>
+                        <option value="BIDV">BIDV</option>
+                        <option value="Agribank">Agribank</option>
+                        <option value="Techcombank">Techcombank (TCB)</option>
+                        <option value="MBBank">MB Bank (Quân Đội)</option>
+                        <option value="VPBank">VPBank</option>
+                        <option value="Khac">Ngân hàng khác...</option>
+                    </select>
+
+                    <div class="search-wrapper">
+                        <input type="text" id="bank-acc-input" class="search-input" placeholder=" " />
+                        <span class="marquee-placeholder">Nhập số tài khoản vào đây...</span>
+                        <button type="submit" class="search-icon" style="background:none; border:none; padding:0; cursor:pointer;">
+                            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="card-description">
+                    Tra cứu lừa đảo, xác minh số tài khoản ngân hàng có nghi lừa đảo hay không.
+                </div>
+                <div id="bank-result" class="result-box"></div>
+            </div>
+        </div>
+
+        <!-- Ô TÍNH NĂNG 4: TRA CỨU MÃ VẠCH GS1 -->
+        <div class="lookup-card">
+            <div class="card-title">Check Mã Vạch GS1</div>
+            <hr class="card-divider">
+            <div class="card-body">
+                <form onsubmit="event.preventDefault(); kiemTraMaVachSieuCap();">
+                    <div class="search-wrapper">
+                        <input type="text" id="barcode-input" class="search-input" placeholder=" " maxlength="15" />
+                        <span class="marquee-placeholder">Nhập dãy 13 số mã vạch sản phẩm...</span>
+                        <button type="submit" class="search-icon" style="background:none; border:none; padding:0; cursor:pointer;">
+                            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="card-description">
+                    Phân tích xuất xứ quốc gia, mã doanh nghiệp và kiểm tra tính hợp lệ toán học của mã vạch.
+                </div>
+                <div id="barcode-result" class="result-box"></div>
+            </div>
+        </div>
+
+        <!-- Ô TÍNH NĂNG 5: QUÉT ẢNH THÔNG MINH (OCR) -->
+        <div class="lookup-card">
+            <div class="card-title">Quét Ảnh Tin Nhắn / Bill Transfer</div>
+            <hr class="card-divider">
+            <div class="card-body">
+                
+                <div class="upload-zone" onclick="document.getElementById('file-input').click()">
+                    <span id="upload-text">📱 Bấm vào đây để chọn hoặc chụp ảnh</span>
+                    <input type="file" id="file-input" accept="image/*" style="display:none;" onchange="previewImage(event)">
+                    <img id="preview" alt="Ảnh đã chọn">
+                </div>
+
+                <button class="action-btn" id="ocr-btn" onclick="quetAnhThongMinh()" disabled>Hãy chọn ảnh trước</button>
+                <div id="ocr-status" class="ocr-status-text"></div>
+
+                <div id="ocr-result-area" style="display: none; width: 100%; text-align: left; margin-top: 20px;">
+                    <p style="color: #e2efd4; font-weight: bold; font-size: 24pt;">📊 Kết quả đọc tự động:</p>
+                    
+                    <p class="card-label" style="font-size: 20pt;">💰 Số tiền nhắc đến:</p>
+                    <div id="res-money" class="extracted-item"></div>
+
+                    <p class="card-label" style="font-size: 20pt;">👤 Tên người nhận tiền:</p>
+                    <div id="res-recipient" class="extracted-item"></div>
+
+                    <p class="card-label" style="font-size: 20pt;">📝 Tên xuất hiện trong nội dung:</p>
+                    <div id="res-sender" class="extracted-item"></div>
+
+                    <div id="name-warning-box" class="danger-note" style="display: none;">
+                        ⚠️ BÁC ƠI CẦN CHÚ Ý: Tên người nhận tiền và tên ở phần nội dung ghi chú không giống nhau. Hãy kiểm tra lại cẩn thận trước khi chuyển khoản!
+                    </div>
+
+                    <p class="card-label" style="font-size: 20pt;">📞 Số điện thoại trong ảnh:</p>
+                    <div id="res-phone" class="extracted-item"></div>
+
+                    <p class="card-label" style="font-size: 20pt;">💳 Số tài khoản ngân hàng:</p>
+                    <div id="res-bank" class="extracted-item"></div>
+
+                    <button class="action-btn" style="margin-top: 20px;" onclick="kiemTraSauKhiQuet()">Tiến Hành Kiểm Tra Các Số Trên Hệ Thống</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT XỬ LÝ TOÀN BỘ CHỨC NĂNG & BACKEND -->
+    <script>
+        const BACKEND_BASE_URL = "https://tro-ly-an-toan-backend.onrender.com";
+        let globalImageSrc = null; 
+        let foundPhone = "", foundBank = "";
+        
+        // 1. Tra cứu sản phẩm
+        async function xuLyTraCuuSanPham() {
+            const product = document.getElementById('product-input').value.trim();
+            const resBox = document.getElementById('product-result');
+            
+            if(!product) { 
+                alert("Bác chưa nhập tên sản phẩm cần kiểm tra!"); 
+                return; 
+            }
+
+            resBox.style.display = "block";
+            resBox.style.backgroundColor = "#e2efd4"; 
+            resBox.style.color = "#266541";
+            resBox.innerHTML = "⏳ Đang kết nối dữ liệu kiểm tra sản phẩm...";
+
+            try {
+                const response = await fetch(`${BACKEND_BASE_URL}/api/v1/check-product?name=${encodeURIComponent(product)}`);
+                const result = await response.json();
+
+                if (result.success && result.data && result.data.length > 0) {
+                    let htmlText = `<b>Kết quả tra cứu cho "${product}":</b><br><br>`;
+                    result.data.forEach(item => {
+                        htmlText += `📦 <b>${item.name}</b> (${item.category || 'Sản phẩm'}): ${item.message || (item.status === 'safe' ? 'An toàn' : 'Cảnh báo nguy hiểm')}<br>`;
+                    });
+                    resBox.innerHTML = htmlText;
+                } else {
+                    resBox.innerHTML = `❓ Không tìm thấy thông tin cảnh báo nào cho sản phẩm "<b>${product}</b>" trong dữ liệu.`;
+                }
+            } catch (e) {
+                console.error("Lỗi API Product:", e);
+                resBox.innerHTML = `❌ LỖI KẾT NỐI: Không thể truy cập dữ liệu máy chủ.`;
+            }
+        }                    
+
+        // 2. Tra cứu Số điện thoại (Kết nối API Render)
+        async function goiApiCheckSdtThucTe(sdt) {
+            const URL_API = `${BACKEND_BASE_URL}/api/v1/check-phone?number=${sdt}`;
+            try {
+                const response = await fetch(URL_API);
+                if (!response.ok) return null;
+                const result = await response.json(); 
+                return result.success ? result.data : null;
+            } catch (e) {
+                console.error("Lỗi kết nối API:", e);
+                return null;
+            }
+        }
+
+        async function xuLyKiemTraSdt() {
+            const phone = document.getElementById('phone-input').value.trim();
+            const resBox = document.getElementById('phone-result');
+            if (!phone) { alert("Bác chưa nhập số điện thoại nào cả!"); return; }
+            
+            resBox.style.display = "block";
+            resBox.style.backgroundColor = "#FFFFFF"; resBox.style.color = "#1A1A1A";
+            resBox.innerHTML = "⏳ Hệ thống đang truy vấn dữ liệu đám mây...";
+
+            const apiResult = await goiApiCheckSdtThucTe(phone);
+
+            if (apiResult === null) {
+                resBox.style.backgroundColor = "#FFE0B2"; resBox.style.color = "#E65100"; 
+                resBox.innerHTML = `❌ LỖI KẾT NỐI: Không thể kết nối tới máy chủ dữ liệu.`;
+                return;
+            }
+
+            if (apiResult.is_scam) {
+                resBox.style.backgroundColor = "#FFCDD2"; resBox.style.color = "#C62828";
+                resBox.innerHTML = `🚨 CẢNH BÁO: Số điện thoại này nằm trong danh sách cảnh báo lừa đảo! <br>📝 Loại hình: ${apiResult.details.scam_type}. Lượt báo cáo xấu: ${apiResult.details.report_count}.`;
+            } else {
+                resBox.style.backgroundColor = "#C8E6C9"; resBox.style.color = "#2E7D32";
+                resBox.innerHTML = `✅ TẠM AN TOÀN: Chưa phát hiện báo cáo xấu về số này trên hệ thống.`;
+            }
+        }
+
+        // 3. Tra cứu Số tài khoản ngân hàng (Kết nối API Render)
+        async function kiemTraTaiKhoanNganHang() {
+            const stk = document.getElementById('bank-acc-input').value.trim().replace(/\s+/g, '');
+            const nganHang = document.getElementById('bank-select').value;
+            const resBox = document.getElementById('bank-result');
+
+            if (!stk) { alert("Bác chưa nhập số tài khoản ngân hàng!"); return; }
+
+            resBox.style.display = "block";
+            resBox.style.backgroundColor = "#FFFFFF"; resBox.style.color = "#1A1A1A";
+            resBox.innerHTML = "⏳ Hệ thống đang kiểm tra trên máy chủ...";
+
+            let apiResult = null;
+            try {
+                const response = await fetch(`${BACKEND_BASE_URL}/api/v1/check-bank?account=${stk}`);
+                if (response.ok) {
+                    const result = await response.json();
+                    if (result.success) apiResult = result.data;
+                }
+            } catch (e) {
+                console.error("Lỗi API Bank:", e);
+            }
+
+            if (apiResult === null) {
+                resBox.style.backgroundColor = "#FFE0B2"; resBox.style.color = "#E65100";
+                resBox.innerHTML = `❌ LỖI KẾT NỐI: Không thể kết nối tới máy chủ.`;
+                return;
+            }
+
+            if (apiResult.is_scam) {
+                resBox.style.backgroundColor = "#FFCDD2"; resBox.style.color = "#C62828";
+                resBox.innerHTML = `🚨 NGUY HIỂM CAO: Tài khoản này nằm trong danh sách đen chuyên nhận tiền lừa đảo! <br>Ngân hàng: ${apiResult.details.bank_name}. Loại hình: ${apiResult.details.scam_type}.`;
+            } else if (stk.length < 8 || stk.length > 16 || /(.)\1{5,}/.test(stk)) {
+                resBox.style.backgroundColor = "#FFF9E6"; resBox.style.color = "#E65100";
+                resBox.innerHTML = `⚠️ DẤU HIỆU BẤT THƯỜNG: Cấu trúc số tài khoản lạ, có thể là tài khoản ảo/ví điện tử. Hãy cẩn trọng!`;
+            } else {
+                resBox.style.backgroundColor = "#C8E6C9"; resBox.style.color = "#2E7D32";
+                resBox.innerHTML = `✅ CHƯA THẤY DẤU HIỆU XẤU: Tài khoản tại <b>${nganHang}</b> chưa có lịch sử báo cáo xấu nào.`;
+            }
+        }
+
+        // 4. Kiểm tra mã vạch GS1
+        function kiemTraMaVachSieuCap() {
+            const code = document.getElementById('barcode-input').value.trim().replace(/\s+/g, '');
+            const resBox = document.getElementById('barcode-result');
+            if (!code) { alert("Bác chưa nhập số mã vạch!"); return; }
+
+            resBox.style.display = "block";
+            if (!/^\d{12,14}$/.test(code)) {
+                resBox.style.backgroundColor = "#FFCDD2"; resBox.style.color = "#C62828";
+                resBox.innerHTML = "❌ LỖI: Mã vạch không đúng định dạng số.";
+                return;
+            }
+
+            let maQuocGia = code.substring(0, 3);
+            let maDoanhNghiep = code.length === 13 ? code.substring(3, 7) : "Tự động phân tách";
+            let maSanPham = code.length === 13 ? code.substring(7, 12) : code.substring(3, code.length - 1);
+            let soCuoiCung = code.substring(code.length - 1);
+
+            let quocGiaTen = "Chưa xác định hệ thống quốc gia";
+            if (maQuocGia === "893") quocGiaTen = "Việt Nam 🇻🇳";
+            else if (parseInt(maQuocGia) >= 690 && parseInt(maQuocGia) <= 699) quocGiaTen = "Trung Quốc 🇨🇳";
+            else if (maQuocGia === "880") quocGiaTen = "Hàn Quốc 🇰🇷";
+            else if (maQuocGia === "885") quocGiaTen = "Thái Lan 🇹🇭";
+            else if ((parseInt(maQuocGia) >= 450 && parseInt(maQuocGia) <= 459) || (parseInt(maQuocGia) >= 490 && parseInt(maQuocGia) <= 499)) quocGiaTen = "Nhật Bản 🇯🇵";
+
+            let danhGiaToanHoc = "";
+            if (code.length === 13) {
+                let tongLe = 0, tongChan = 0;
+                for (let i = 0; i < 12; i++) {
+                    if (i % 2 === 0) tongLe += parseInt(code[i]);
+                    else tongChan += parseInt(code[i]);
+                }
+                let tongCong = tongLe + (tongChan * 3);
+                let soKiemTraChuan = (10 - (tongCong % 10)) % 10;
+                if (soKiemTraChuan === parseInt(soCuoiCung)) {
+                    danhGiaToanHoc = `<span style="color: #2E7D32;">✅ KHỚP CHUẨN GS1 (Số cuối ${soKiemTraChuan})</span>`;
+                } else {
+                    danhGiaToanHoc = `<span style="color: #C62828;">⚠️ LỆCH CHUẨN (Đuôi đúng phải là số <b>${soKiemTraChuan}</b> chứ không phải số <b>${soCuoiCung}</b>)</span>`;
+                }
+            } else {
+                danhGiaToanHoc = `<span>Không áp dụng cho cấu trúc ${code.length} số</span>`;
+            }
+
+            resBox.style.backgroundColor = "#FFFFFF"; resBox.style.color = "#1A1A1A";
+            resBox.innerHTML = `
+                📍 <b>Xuất xứ quốc gia:</b> ${quocGiaTen} (Đầu mã: ${maQuocGia})<br>
+                🏢 <b>Mã doanh nghiệp:</b> ${maDoanhNghiep}<br>
+                📦 <b>Mã sản phẩm:</b> ${maSanPham}<br>
+                ⚖️ <b>Xác thực thuật toán:</b> ${danhGiaToanHoc}
+            `;
+        }
+
+        // 5. Quét Ảnh OCR bằng Tesseract.js
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('preview').src = e.target.result;
+                    document.getElementById('preview').style.display = 'block';
+                    document.getElementById('upload-text').style.display = 'none';
+                    const btn = document.getElementById('ocr-btn');
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                    btn.innerText = 'Bắt Đầu Quét Ảnh';
+                    globalImageSrc = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        async function quetAnhThongMinh() {
+            if (!globalImageSrc) return;
+            const status = document.getElementById('ocr-status'); 
+            const resArea = document.getElementById('ocr-result-area'); 
+            const warningBox = document.getElementById('name-warning-box');
+            
+            status.innerHTML = "⏳ Máy đang phân tích hình ảnh (khoảng 5-10s)..."; 
+            resArea.style.display = 'none'; 
+            warningBox.style.display = 'none';
+
+            try {
+                const result = await Tesseract.recognize(globalImageSrc, 'vie+eng'); 
+                const text = result.data.text;
+
+                // Tách số tiền
+                const moneyRegex = /([\d,\.]+)\s*(?:VND|vnd|VNĐ|vnđ|đ|đồng)/i; 
+                const moneys = text.match(moneyRegex);
+                document.getElementById('res-money').innerText = moneys ? moneys[0] : "Không tìm thấy";
+
+                // Tách tên người nhận/nội dung
+                const namePattern = /[A-Z]+\s[A-Z]+\s[A-Z]+(\s[A-Z]+)?/g; 
+                let foundNames = text.match(namePattern) || [];
+                const filterWords = ["VIETINBANK", "VIETCOMBANK", "NGAN", "HANG", "BIDV", "AGRIBANK", "TECHCOMBANK", "MBBANK"]; 
+                let cleanNames = foundNames.filter(name => !filterWords.some(word => name.includes(word)));
+                
+                let recipientName = cleanNames[0] || "Không rõ"; 
+                let senderName = cleanNames[1] || "Không rõ";
+                
+                document.getElementById('res-recipient').innerText = recipientName; 
+                document.getElementById('res-sender').innerText = senderName;
+
+                if (recipientName !== "Không rõ" && senderName !== "Không rõ" && recipientName.trim() !== senderName.trim()) { 
+                    warningBox.style.display = 'block'; 
+                }
+
+                // Tách SĐT
+                const phoneRegex = /(0[3|5|7|8|9]\d{8})\b/g; 
+                const phones = text.match(phoneRegex); 
+                foundPhone = phones ? phones[0].trim() : "";
+                document.getElementById('res-phone').innerText = foundPhone || "Không tìm thấy";
+
+                // Tách Số tài khoản
+                const bankRegex = /\b(\d{8,16})\b/g; 
+                let banks = text.match(bankRegex) || []; 
+                if (phones) banks = banks.filter(b => !phones.includes(b));
+                foundBank = banks.length > 0 ? banks[0].trim() : ""; 
+                document.getElementById('res-bank').innerText = foundBank || "Không tìm thấy";
+
+                status.innerHTML = "✅ Đã đọc xong ảnh!"; 
+                resArea.style.display = 'block';
+            } catch (e) { 
+                status.innerHTML = "❌ Có lỗi xảy ra khi đọc ảnh. Vui lòng thử lại!"; 
+            }
+        }
+
+        function kiemTraSauKhiQuet() {
+            if (foundPhone) {
+                document.getElementById('phone-input').value = foundPhone;
+                xuLyKiemTraSdt();
+                window.scrollTo({top: 600, behavior: 'smooth'});
+            } else if (foundBank) {
+                document.getElementById('bank-acc-input').value = foundBank;
+                kiemTraTaiKhoanNganHang();
+                window.scrollTo({top: 1200, behavior: 'smooth'});
+            } else {
+                alert("Máy không tự động tách được số điện thoại hay số tài khoản rõ ràng. Bác nhập tay vào các ô phía trên giúp cháu nhé!");
+            }
+        }
+    </script>
+</body>
+</html>

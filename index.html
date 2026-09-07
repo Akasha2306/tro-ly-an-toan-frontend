@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Trợ Lý An Toàn</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bevan&family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="menu-btn" id="menuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            <p>Được làm ra bởi Như, Thuỷ và Trí</p>
+            <p class="contact-title">Thông tin liên hệ:</p>
+            <p class="contact-info">Email: huynhkhoinhu2305@gmail.com</p>
+            <p class="contact-info">Địa chỉ: Thành phố Huế</p>
+            <p style="margin-top: 40px; font-style: italic;">Cảm ơn đã sử dụng trang web của chúng tôi!</p>
+        </div>
+    </div>
+
+    <div class="header-container">
+        <h1>Xin chào cô chú</h1>
+        <h2>Vui lòng chọn tính năng</h2>
+    </div>
+
+    <div class="boxes-container">
+        
+        <a href="hoctap.html" class="box-link">
+            <div class="box">
+                <div class="box-title">HỌC TẬP</div>
+                <div class="box-tooltip">Giúp bổ sung kiến thức về các loại hình lừa đảo</div>
+            </div>
+        </a>
+
+        <a href="tracuu.html" class="box-link">
+            <div class="box">
+                <div class="box-title">TRA CỨU</div>
+                <div class="box-tooltip">Giúp tra cứu thông tin dược mỹ phẩm, thông tin lừa đảo và các vấn đề hằng ngày khác</div>
+            </div>
+        </a>
+
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('open');
+            sidebar.classList.toggle('open');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+                menuBtn.classList.remove('open');
+                sidebar.classList.remove('open');
+            }
+        });
+    </script>
+
+</body>
+</html>
