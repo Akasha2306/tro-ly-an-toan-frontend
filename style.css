@@ -153,6 +153,31 @@ h2 {
 /* ==========================================
    B. ĐỊNH DẠNG TRANG TRA CỨU
    ========================================== */
+.tracuu-header {
+    text-align: center;
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.tracuu-title {
+    font-family: 'Bevan', serif;
+    font-size: 67pt;
+    color: #e7f3db;
+    margin: 0;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.tracuu-subtitle {
+    font-family: 'Cabin', sans-serif;
+    font-size: 36pt;
+    color: #e7f3db;
+    margin-top: 15px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+/* hộp tìm kiếm*/ 
 .lookup-container {
     display: flex;
     flex-direction: column;
@@ -164,17 +189,17 @@ h2 {
     padding: 20px;
     box-sizing: border-box;
 }
-
+/* chữ ô tìm kiếm*/
 .lookup-card {
-    width: 1106px;
+    position: relative;
+    min-width: 1106px;
+    width: auto;
     min-height: 546px;
     height: auto;
-    background-color: #266541; 
-    border: 4px solid #8ebb8e; 
-    border-radius: 24px; 
+    background-color: #e2efd4; 
+    border: none;  
     box-sizing: border-box;
-    padding: 30px 0px;
-    position: relative;
+    padding: 0px 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -185,27 +210,20 @@ h2 {
 .card-title {
     font-family: 'Bevan', serif;
     font-size: 36pt;
-    color: #ffffff; 
+    color: #e7f3db; 
+    background-color: #266541;
     margin: 0;
     width: 100%;
-    min-height: 73px;
+    min-height: 100px;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 30px 20px 30px; 
+    padding: 30 30px 20px 30px; 
     box-sizing: border-box;
+    box-shadow: 12px 12px 10px rgba(0, 0, 0, 0.3);
 }
-
-.card-divider {
-    position: relative;
-    width: 100%;
-    height: 4px; 
-    background-color: #8ebb8e;
-    border: none;
-    flex-shrink: 0; 
-}
-
+/* phần trắng trong mỗi ô*/
 .card-body {
     margin-top: 40px; 
     width: 100%;
@@ -213,18 +231,18 @@ h2 {
     flex-direction: column;
     align-items: center;
     gap: 25px; 
-    padding: 0 40px; 
+    padding: 40px 40px; 
     box-sizing: border-box;
 }
-
+/*nhập tên sản phẩm vào đây*/
 .card-label {
     font-family: 'Cabin', sans-serif;
     font-size: 28pt;
-    color: #e7f3db;
+    color: #26503b;
     margin-bottom: 5px;
     font-weight: bold;
 }
-
+/*trình thả xuống ngân hàng*/ 
 .bank-dropdown {
     width: 449px;
     height: 70px;
@@ -243,7 +261,7 @@ h2 {
     position: relative;
     width: 449px;  
     height: 82px;  
-    background-color: #e2efd4; 
+    background-color: #8ebb8e; 
     box-shadow: 18px 12px 0px rgba(226, 239, 212, 0.2); 
     display: flex;
     align-items: center;
@@ -252,7 +270,7 @@ h2 {
     overflow: hidden; 
     border-radius: 8px;
 }
-
+/* chữ khi user nhập sản phẩm*/
 .search-input {
     width: 85%;
     height: 100%;
@@ -287,7 +305,7 @@ h2 {
     cursor: pointer;
     z-index: 3; 
     flex-shrink: 0; 
-    background-color: #e2efd4; 
+    background-color: #8ebb8e; 
     border-left: 2px solid rgba(38, 101, 65, 0.3);
     box-sizing: border-box; 
 }
@@ -303,18 +321,20 @@ h2 {
 .search-input:not(:placeholder-shown) ~ .marquee-placeholder {
     display: none;
 }
-
+/* chữ mô tả tính naăng của ô (tra cứu dược phẩm)*/
 .card-description {
+    position: relative;
     font-family: 'Cabin', sans-serif;
-    font-size: 28pt;
-    color: #ffffff;
+    font-size: 36pt;
+    color: ##26503b;
+    font-style: italic;
     line-height: 1.4;
     margin-top: 20px;
     width: 100%;
     max-width: 900px; 
     word-wrap: break-word; 
 }
-
+/* ô chạy kết quả*/
 .result-box {
     margin-top: 20px;
     padding: 20px;
@@ -404,4 +424,612 @@ h2 {
     color: #e2efd4;
     margin-top: 10px;
     font-weight: bold;
+}
+
+/* ==========================================
+   CẤU HÌNH DÀNH RIÊNG CHO TRANG HOCTAP.HTML
+   ========================================== */
+
+
+
+/* --- LỚP 1: CỤM TIÊU ĐỀ --- */
+.hoctap-header {
+    text-align: center;
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.hoctap-title {
+    font-family: 'Bevan', serif;
+    font-size: 67pt;
+    color: #e7f3db;
+    margin: 0;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.hoctap-subtitle {
+    font-family: 'Cabin', sans-serif;
+    font-size: 36pt;
+    color: #e7f3db;
+    margin-top: 15px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+/* --- LỚP 2: DANH SÁCH 3 FOLDER TÀI LIỆU --- */
+.folder-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; /* Khoảng cách giữa các folder */
+    flex-wrap: wrap; /* Tự xuống dòng trên màn hình nhỏ */
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* Cấu trúc chung của 1 Folder */
+.folder-card {
+    position: relative;
+    width: 320px;
+    height: 240px;
+    text-decoration: none; /* Xóa gạch chân liên kết */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    
+    /* Đổ bóng đen lệch về phía bên phải dưới */
+    filter: drop-shadow(10px 10px 8px rgba(0, 0, 0, 0.4));
+}
+
+/* Tai kẹp của Folder (phần gờ phía trên) */
+.folder-tab {
+    width: 120px;
+    height: 25px;
+    background-color: #e7f3db;
+    border-radius: 12px 12px 0 0;
+    margin-left: 0; /* Tai nằm góc trên bên trái folder */
+}
+
+/* Thân của Folder */
+.folder-body {
+    flex: 1;
+    background-color: #e7f3db;
+    border-radius: 0 16px 16px 16px; /* Bo góc mềm mại ngoại trừ góc trên bên trái nối với tai */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Chữ hiển thị trên Folder */
+.folder-body span {
+    font-family: 'Bevan', serif;
+    font-size: 36pt;
+    color: #2f8c57;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+/* Hiệu ứng khi rê chuột vào Folder */
+.folder-card:hover {
+    transform: translateY(-8px); /* Nổi nhẹ lên trên */
+    filter: drop-shadow(14px 14px 12px rgba(0, 0, 0, 0.5)); /* Bóng đen đậm hơn */
+}
+
+/* ==========================================
+   CẤU HÌNH DÀNH RIÊNG CHO TRANG BAIVIET.HTML
+   ========================================== */
+
+/* Background trang */
+body.baiviet-page {
+    background-color: #2f8c57;
+    min-height: 100vh;
+    margin: 0;
+    padding: 60px 20px 80px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Tiêu đề chính & phụ */
+.baiviet-header {
+    text-align: center;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.baiviet-title {
+    font-family: 'Bevan', serif;
+    font-size: 67pt;
+    color: #e2efd4;
+    margin: 0;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.baiviet-subtitle {
+    font-family: 'Cabin', sans-serif;
+    font-size: 36pt;
+    color: #e2efd4;
+    margin-top: 15px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+/* --- DANH SÁCH CÁC MẢNG BÀI VIẾT --- */
+.articles-grid {
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+/* Thẻ mảng bài viết (Khung A4 + Tiêu đề) */
+.article-card {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 280px;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Cửa sổ xem trước tỷ lệ A4 chuẩn (1 : 1.414) */
+.a4-preview-window {
+    width: 100%;
+    height: 395px; /* Tỷ lệ A4 tương ứng với width 280px */
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden; /* Cắt phần ảnh thừa khi trượt */
+    position: relative;
+    box-shadow: 10px 12px 16px rgba(0, 0, 0, 0.4); /* Đổ bóng trang A4 */
+    transition: box-shadow 0.3s ease;
+}
+
+/* Băng chuyền chứa các trang bài viết */
+.a4-slides-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s ease-in-out; /* Tốc độ trượt mượt mà */
+}
+
+/* Ảnh trang A4 xem trước */
+.a4-page {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Chú thích trích từ tiêu đề bên dưới ảnh */
+.article-caption {
+    font-family: 'Cabin', sans-serif;
+    font-size: 36pt;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+/* --- HIỆU ỨNG RÊ CHUỘT (HOVER) --- */
+/* 1. Mảng bài viết nổi hẳn lên trên */
+.article-card:hover {
+    transform: translateY(-12px);
+}
+
+.article-card:hover .a4-preview-window {
+    box-shadow: 16px 20px 24px rgba(0, 0, 0, 0.55);
+}
+
+/* 2. Tự động trượt các trang khi hover vào bài viết */
+.article-card:hover .a4-slides-track {
+    animation: auto-slide-a4 4s infinite alternate ease-in-out;
+}
+
+@keyframes auto-slide-a4 {
+    0%   { transform: translateX(0); }
+    50%  { transform: translateX(-100%); }
+    100% { transform: translateX(-200%); }
+}
+
+/* --- CHÚ THÍCH CỦA ĐỘI NGŨ (IN NGHIÊNG, NHẠT) --- */
+.baiviet-note {
+    font-family: 'Cabin', sans-serif;
+    font-size: 28pt;
+    color: #e2efd4;
+    opacity: 0.75; /* Tác dụng làm nhạt chữ */
+    font-style: italic;
+    text-align: center;
+    max-width: 2000px;
+    margin-bottom: 50px;
+    line-height: 1.3;
+}
+
+/* --- HỘP VUÔNG ĐÓNG GÓP BÀI VIẾT (NẰM TRONG 1 HỘP) --- */
+.contribution-box {
+    background-color: #e2efd4;
+    padding: 30px 40px;
+    width: 100%;
+    max-width: 1100px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Dòng chữ yêu cầu trong hộp */
+.contribution-text {
+    font-family: 'Cabin', sans-serif;
+    font-size: 36pt;
+    color: #2f8c57;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Form chứa nút đính kèm và nút nộp */
+.upload-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* Nút đính kèm tệp */
+.upload-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #2f8c57;
+    color: #e2efd4;
+    font-family: 'Cabin', sans-serif;
+    font-size: 24pt;
+    padding: 10px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+
+.paperclip-icon {
+    stroke: #e2efd4;
+}
+
+
+/* ==========================================
+   CẤU HÌNH TRANG BÀI ĐỌC 1 (BAIVIET1.HTML)
+   ========================================== */
+
+/* Thiết lập màu nền trang trắng */
+.article-page-body {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* Khung chung chung */
+.a4-container {
+    background-color: #ffffff;
+    min-height: 100vh;
+    margin: 0;
+    padding: 60px 20px 80px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+/* --- PHẦN HEADLINE --- */
+.article-header {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* chữ bài đọc 1 bài độc 2 đồ */
+.article-tag {
+    font-family: 'Atlante Display', 'Playfair Display', serif;
+    font-size: 36pt;
+    font-weight: bold;
+    font-style: italic;
+    color: #2f8c57;
+}
+
+.article-date {
+    font-family: 'Atlante Display', 'Playfair Display', serif;
+    font-size: 36pt;
+    font-weight: bold;
+    color: #807a6d;
+}
+
+.divider-line {
+    border: none;
+    height: 2px;
+    background-color: #246b42;
+    margin: 8px;
+    position: relative;
+}
+
+.header-main {
+    display: grid;
+    /* Chia làm 3 phần: Khoảng trống trái - Tiêu đề chính giữa - Nút âm thanh phải */
+    grid-template-columns: 140px 1fr auto;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+}
+.header-left-spacer {
+    width: 140px; /* Bằng với độ rộng ước tính của nút bên phải để đẩy tiêu đề ra đúng tâm */
+}
+/*chữ du lịch giá rẻ*/
+.main-title {
+    font-family: 'Atlante Display', 'Playfair Display', serif;
+    font-size: 67pt;
+    font-weight: bold;
+    font-style: italic;
+    color: #246b42;
+    margin: 0px 36px 0px 0px;
+    text-align: center; /* Căn giữa chữ */
+    white-space: nowrap; /* Giữ tiêu đề trên 1 dòng */
+}
+
+/* Nút âm thanh */
+.audio-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #246b42;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Cormorant Garamond', sans-serif;
+    font-size: 36pt;
+     font-style: italic;
+    font-weight: 600;
+    white-space: nowrap; /* Ngăn nút gãy dòng */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    justify-self: end; /* Đẩy nút dính chặt về góc phải */
+}
+
+.audio-btn:hover {
+    background-color: #1b5232;
+    transform: scale(1.05);
+}
+
+.audio-btn.reading-active {
+    background-color: #d9534f; /* Đổi màu đỏ khi bấm dừng */
+}
+
+.header-bottom {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.author-tag {
+    font-family: 'Atlante Display', 'Playfair Display', serif;
+    font-size: 36pt;
+    font-weight: bold;
+    color: #807a6d;
+    font-style: italic;
+}
+
+/* --- KHUNG VIỀN NỘI DUNG ĐỘ DÀY 3px MÀU #246b42 --- */
+.article-box {
+    border: 3px solid #246b42;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Khung hình chữ nhật màu #246b42 chứa tiêu đề mục 1 */
+.section-banner {
+    background-color: #246b42;
+    padding: 18px 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Số 1 nằm trong viền hình tròn dày 2 màu trắng */
+.number-circle {
+    width: 67px;
+    height: 67px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-family: 'Atlante Display', 'Playfair Display', serif;
+    font-size: 36pt;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+/* tiêu đề phần 1 2 3 đồ rứa */
+.section-title {
+    color: #ffffff;
+    font-family: 'Atlante Display', 'Playfair Display', serif;
+    font-size: 36pt;
+    font-weight: bold;
+    font-style: italic;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Đoạn văn bản chính font Cormorant Garamond size 36pt, căn đều hai bên */
+.intro-paragraph {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36pt;
+    color: #000000;
+    text-align: justify; /* Căn đều hai bên */
+    line-height: 1.4;
+    padding: 25px;
+    margin: 0;
+}
+
+/* --- HIỆU ỨNG NỔI CHỮ SPOTIFY KHI NGHE ĐỌC --- */
+.read-word {
+    display: inline-block;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    padding: 0 2px;
+}
+
+/* Khi từ được đọc đến: Phóng to, đổi màu xanh ngọc rực sáng */
+.read-word.active-highlight {
+    color: #246b42;
+    transform: scale(1.25);
+    font-weight: bold;
+}
+
+/* --- PHẦN BỐ CỤC CHIA CỘT BÊN DƯỚI --- */
+.content-split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Cột bên phải chứa ảnh */
+    gap: 20px;
+    padding: 10px 25px 25px 25px;
+    align-items: start;
+    box-sizing: border-box;
+}
+/* Đường line nửa ngăn cách dày 2 */
+.guide-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36pt;
+    color: #000000;
+    margin-bottom: 12px;
+}
+
+.guide-list {
+    margin: 0;
+    padding: 25px;
+    padding-left: 60px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36pt;
+    color: #000000;
+    line-height: 1.4;
+    text-align: justify;
+}
+
+.guide-list li {
+    margin-bottom: 12px;
+}
+
+/* Khung nền màu #2f8c57 bao quanh ảnh và chú thích bên phải */
+.right-col-box {
+    background-color: #2f8c57;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+box-sizing: border-box;
+width: 100%;
+}
+
+.chat-img-wrapper {
+    width: 100%;
+    background-color: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+
+.chat-img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+/* Chú thích font Montserrat size 36pt màu #e7f3db in nghiêng nép bên ảnh */
+.image-caption {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36pt;
+    color: #e7f3db;
+    font-style: italic;
+    line-height: 1.35;
+}
+/*hiệu ứng đường link*/
+/* Kiểu dáng đường link nằm trong danh sách */
+.list-link {
+    color: #246b42; /* Màu xanh lá đậm tone-sur-tone với bài */
+    text-decoration: underline; /* Hoặc để none nếu không muốn gạch chân */
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+/* Hiệu ứng khi rê chuột vào link */
+.list-link:hover {
+    color: #2f8c57; /* Sáng màu hơn một chút khi hover */
+    text-decoration: none; /* Mất gạch chân khi di chuột vào */
+}
+
+/* KHUNG BỌC NÚT TRẮC NGHIỆM: CĂN GIỮA & CÁCH VIỀN */
+.quiz-wrapper-box {
+    display: flex;
+    justify-content: center; /* Căn giữa nút theo chiều ngang */
+    align-items: center;
+    margin: 30px auto 25px auto; /* Tạo khoảng cách trên dưới thoáng, không dính viền */
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* NÚT LÀM TRẮC NGHIỆM KÍCH THƯỚC ĐẸP MẮT */
+.quiz-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #246b42;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 25px;
+    font-family: 'Cormorant Garamond', sans-serif;
+    font-size: 36pt;
+     font-style: italic;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(36, 107, 66, 0.15);
+}
+
+.quiz-icon {
+    stroke: #ffffff;
+    flex-shrink: 0;
+}
+
+/* HIỆU ỨNG RÊ CHUỘT */
+.quiz-btn:hover {
+    background-color: #1b5232;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 16px rgba(36, 107, 66, 0.3);
+}
+
+/* Hiệu ứng khi rê chuột vào nút làm tn */
+.quiz-btn:hover {
+    background-color: #1b5232;
+    transform: scale(1.04);
+    box-shadow: 0 4px 10px rgba(36, 107, 66, 0.3);
 }
