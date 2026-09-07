@@ -151,33 +151,8 @@ h2 {
 
 
 /* ==========================================
-   B. ĐỊNH DẠNG TRANG TRA CỨU
+   B. ĐỊNH DẠNG TRANG TRA CỨU (ĐÃ KHÔI PHỤC)
    ========================================== */
-.tracuu-header {
-    text-align: center;
-    margin-bottom: 60px;
-    width: 100%;
-}
-
-.tracuu-title {
-    font-family: 'Bevan', serif;
-    font-size: 67pt;
-    color: #e7f3db;
-    margin: 0;
-    line-height: 1.1;
-    text-align: center;
-}
-
-.tracuu-subtitle {
-    font-family: 'Cabin', sans-serif;
-    font-size: 36pt;
-    color: #e7f3db;
-    margin-top: 15px;
-    margin-bottom: 0;
-    text-align: center;
-}
-
-/* hộp tìm kiếm*/ 
 .lookup-container {
     display: flex;
     flex-direction: column;
@@ -189,17 +164,17 @@ h2 {
     padding: 20px;
     box-sizing: border-box;
 }
-/* chữ ô tìm kiếm*/
+
 .lookup-card {
-    position: relative;
-    min-width: 1106px;
-    width: auto;
+    width: 1106px;
     min-height: 546px;
     height: auto;
-    background-color: #e2efd4; 
-    border: none;  
+    background-color: #266541; 
+    border: 4px solid #8ebb8e; 
+    border-radius: 24px; 
     box-sizing: border-box;
-    padding: 0px 0px;
+    padding: 30px 0px;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -210,20 +185,27 @@ h2 {
 .card-title {
     font-family: 'Bevan', serif;
     font-size: 36pt;
-    color: #e7f3db; 
-    background-color: #266541;
+    color: #ffffff; 
     margin: 0;
     width: 100%;
-    min-height: 100px;
+    min-height: 73px;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30 30px 20px 30px; 
+    padding: 0 30px 20px 30px; 
     box-sizing: border-box;
-    box-shadow: 12px 12px 10px rgba(0, 0, 0, 0.3);
 }
-/* phần trắng trong mỗi ô*/
+
+.card-divider {
+    position: relative;
+    width: 100%;
+    height: 4px; 
+    background-color: #8ebb8e;
+    border: none;
+    flex-shrink: 0; 
+}
+
 .card-body {
     margin-top: 40px; 
     width: 100%;
@@ -231,18 +213,18 @@ h2 {
     flex-direction: column;
     align-items: center;
     gap: 25px; 
-    padding: 40px 40px; 
+    padding: 0 40px; 
     box-sizing: border-box;
 }
-/*nhập tên sản phẩm vào đây*/
+
 .card-label {
     font-family: 'Cabin', sans-serif;
     font-size: 28pt;
-    color: #26503b;
+    color: #e7f3db;
     margin-bottom: 5px;
     font-weight: bold;
 }
-/*trình thả xuống ngân hàng*/ 
+
 .bank-dropdown {
     width: 449px;
     height: 70px;
@@ -261,7 +243,7 @@ h2 {
     position: relative;
     width: 449px;  
     height: 82px;  
-    background-color: #8ebb8e; 
+    background-color: #e2efd4; 
     box-shadow: 18px 12px 0px rgba(226, 239, 212, 0.2); 
     display: flex;
     align-items: center;
@@ -270,7 +252,7 @@ h2 {
     overflow: hidden; 
     border-radius: 8px;
 }
-/* chữ khi user nhập sản phẩm*/
+
 .search-input {
     width: 85%;
     height: 100%;
@@ -305,7 +287,7 @@ h2 {
     cursor: pointer;
     z-index: 3; 
     flex-shrink: 0; 
-    background-color: #8ebb8e; 
+    background-color: #e2efd4; 
     border-left: 2px solid rgba(38, 101, 65, 0.3);
     box-sizing: border-box; 
 }
@@ -321,12 +303,12 @@ h2 {
 .search-input:not(:placeholder-shown) ~ .marquee-placeholder {
     display: none;
 }
-/* chữ mô tả tính naăng của ô (tra cứu dược phẩm)*/
+
 .card-description {
     position: relative;
     font-family: 'Cabin', sans-serif;
     font-size: 36pt;
-    color: #26503b;
+    color: #e7f3db;
     font-style: italic;
     line-height: 1.4;
     margin-top: 20px;
@@ -334,7 +316,7 @@ h2 {
     max-width: 900px; 
     word-wrap: break-word; 
 }
-/* ô chạy kết quả*/
+
 .result-box {
     margin-top: 20px;
     padding: 20px;
@@ -347,7 +329,6 @@ h2 {
     display: none;
     z-index: 3; 
 }
-
 
 /* ==========================================
    C. CSS BỔ SUNG DÀNH RIÊNG CHO OCR & BÁO CÁO
