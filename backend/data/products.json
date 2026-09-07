@@ -1,0 +1,44 @@
+[
+  {
+    "id": "SP001",
+    "name": "Kem dưỡng da ABC",
+    "category": "Mỹ phẩm",
+    "status": "safe",
+    "message": "✅ Sản phẩm đã kiểm định, đạt tiêu chuẩn an toàn lưu hành."
+  },
+  {
+    "id": "SP002",
+    "name": "Thuốc giảm cân XYZ",
+    "category": "Dược phẩm",
+    "status": "warning",
+    "message": "🚨 CẢNH BÁO: Sản phẩm chứa chất cấm Sibutramine, đã bị thu hồi!"
+  },
+  {
+    "id": "SP003",
+    "name": "Sữa bột trẻ em KLM",
+    "category": "Thực phẩm",
+    "status": "safe",
+    "message": "✅ Sản phẩm chính hãng, đầy đủ mã vạch GS1."
+  },
+  {
+    "id": "SP004",
+    "name": "Kẹo sâm Hamer",
+    "category": "Thực phẩm",
+    "status": "warning",
+    "message": "🚨 CẢNH BÁO: Sản phẩm chứa chất cấm là Sildenafil và Tadalafil, đã bị thu hồi!"
+  },
+   {
+    "id": "SP005",
+    "name": "Thực phẩm chức năng giả MediUSA",
+    "category": "Thực phẩm",
+    "status": "warning",
+    "message": "🚨 CẢNH BÁO: Sản phẩm là hàng giả"
+  },
+  {
+    "id": "SP004",
+    "name": "Kẹo Kera",
+    "category": "Thực phẩm",
+    "status": "warning",
+    "message": "🚨 CẢNH BÁO: Sản phẩm chứa chất cấm Sorbitol, đã bị thu hồi!"
+  }
+]
